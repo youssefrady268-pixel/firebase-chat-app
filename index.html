@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Chat App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Auth Container -->
+    <div id="authContainer" class="container auth-container">
+        <div class="auth-box">
+            <h1>Chat App</h1>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form">
+                <h2>Login</h2>
+                <input type="tel" id="loginPhone" placeholder="Phone Number (+1234567890)" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button onclick="loginUser()">Login</button>
+                <p class="toggle-text">Don't have an account? <a onclick="toggleAuthForm()">Sign Up</a></p>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signupForm" class="auth-form hidden">
+                <h2>Create Account</h2>
+                <input type="tel" id="signupPhone" placeholder="Phone Number (+1234567890)" required>
+                <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" required>
+                <input type="text" id="signupName" placeholder="Full Name" required>
+                <button onclick="signupUser()">Sign Up</button>
+                <p class="toggle-text">Already have an account? <a onclick="toggleAuthForm()">Login</a></p>
+            </div>
+
+            <div id="authError" class="error-message hidden"></div>
+        </div>
+    </div>
+
+    <!-- Chat Container -->
+    <div id="chatContainer" class="container chat-container hidden">
+        <div class="chat-header">
+            <h2 id="userName">User</h2>
+            <button onclick="logoutUser()" class="logout-btn">Logout</button>
+        </div>
+
+        <div class="search-container">
+            <input type="tel" id="searchPhone" placeholder="Search by phone number...">
+            <button onclick="searchUser()">Search</button>
+        </div>
+
+        <div class="chat-main">
+            <!-- Users List -->
+            <div class="users-list">
+                <h3>Users</h3>
+                <div id="usersList" class="users-container"></div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div id="chatMessages" class="messages-container">
+                    <p class="select-user-text">Select a user to start chatting</p>
+                </div>
+                <div class="message-input-area">
+                    <input type="text" id="messageInput" placeholder="Type a message..." disabled>
+                    <button id="sendBtn" onclick="sendMessage()" disabled>Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
+    
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
